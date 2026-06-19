@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://loringsim.github.io/web-official-hth-com-cn-2/sitemap.xml

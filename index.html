@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>华体会 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8f9fa;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e1e1e;
+      line-height: 1.6;
+      padding: 2.4rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 主视觉 */
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2.2rem 0;
+      border-bottom: 1px solid #e6e8eb;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero .sub {
+      color: #5f6368;
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: #eef1f4;
+      color: #2c3e50;
+      font-size: 0.8rem;
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+    }
+
+    /* 通用卡片 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      margin: 2.8rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02), 0 6px 20px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h2::before {
+      content: "▍";
+      color: #2b7a62;
+      font-weight: 400;
+    }
+
+    .card p {
+      margin-bottom: 0.8rem;
+      color: #2c2c2c;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: #f0f2f5;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #1f2a3a;
+    }
+
+    /* 引用/提示块 */
+    .note {
+      background: #f2f5f8;
+      padding: 1.4rem 2rem;
+      border-radius: 18px;
+      margin: 2.4rem 0;
+      border-left: 4px solid #2b7a62;
+    }
+
+    .note p {
+      font-size: 0.95rem;
+      color: #1f2a3a;
+    }
+
+    .note a {
+      font-weight: 500;
+    }
+
+    /* 链接样式 */
+    a {
+      color: #1d6f5e;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    a:hover {
+      border-bottom-color: #1d6f5e;
+    }
+
+    /* FAQ 摘要 */
+    .faq-item {
+      border-bottom: 1px solid #eaecee;
+      padding: 1rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-a {
+      color: #3d454f;
+      font-size: 0.95rem;
+    }
+
+    /* 页脚 */
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e0e4e8;
+      font-size: 0.85rem;
+      color: #6c737c;
+    }
+
+    /* 响应式 */
+    @media (max-width: 520px) {
+      body { padding: 1.2rem 0.8rem; }
+      .hero h1 { font-size: 1.8rem; }
+      .card { padding: 1.6rem 1.2rem; }
+      .note { padding: 1rem 1.2rem; }
+    }
+
+    @media (min-width: 800px) {
+      .hero { padding: 4rem 0 2.8rem 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 主视觉 -->
+  <div class="hero">
+    <h1>华体会</h1>
+    <p class="sub">从日常健身到专业运动，一份轻松上手的简明指南</p>
+    <span class="badge">运动生活 · 实用提醒</span>
+  </div>
+
+  <!-- 用途卡片：简明使用场景 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>日常用途</h2>
+      <p><strong>华体会</strong> 可以帮你整理运动计划、记录进展，也适合用来了解不同运动项目的基本规则和注意事项。</p>
+      <p>无论是晨跑、游泳还是居家力量训练，都能找到对应的参考信息。内容偏向实用与科普，不设专业门槛。</p>
+      <div class="tag-list">
+        <span class="tag">运动记录</span>
+        <span class="tag">规则说明</span>
+        <span class="tag">热身拉伸</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>适合人群</h2>
+      <p>运动初学者、想恢复锻炼节奏的人、以及希望多了解一点运动常识的朋友，都比较适合。内容表达直接，不堆术语。</p>
+      <p>如果你只是想简单看看某个运动的基本流程，或者想对比几种训练方式的区别，这里也能提供一些参考。</p>
+      <div class="tag-list">
+        <span class="tag">初学者</span>
+        <span class="tag">运动爱好者</span>
+        <span class="tag">生活探索</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 + 访问提醒 -->
+  <div class="note">
+    <p><strong>访问提醒：</strong> 如果你对运动方法或活动信息有进一步兴趣，可以直接通过 <a href="https://web-official-hth.com.cn">华体会</a> 了解更完整的资源。页面结构清晰，适合慢慢翻看。</p>
+    <p style="margin-top: 0.6rem;">建议使用浏览器自带功能收藏或稍后阅读，方便需要时快速找到。网络环境不同，加载速度可能略有差别，耐心等待几秒就好。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div style="margin: 2.6rem 0 1.4rem;">
+    <h2 style="font-weight: 600; font-size: 1.2rem; margin-bottom: 1.2rem;">常见疑问摘要</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">需要注册或下载吗？</div>
+      <div class="faq-a">大部分内容直接浏览即可，不需要额外注册。部分互动功能可能需要简单登录，但浏览基础信息没有限制。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">内容更新频率如何？</div>
+      <div class="faq-a">页面会不定期补充新的运动说明和提醒，尤其季节交替时会有一些应景的调整。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">信息可靠吗？</div>
+      <div class="faq-a">内容参考了常见运动指南和通用健康建议，但每个人身体情况不同，请根据自己状态合理调整。</div>
+    </div>
+  </div>
+
+  <!-- 简洁引导 -->
+  <p style="font-size: 0.95rem; background: #f3f5f7; padding: 0.8rem 1.4rem; border-radius: 40px; text-align: center;">
+    想了解更多？直接前往 <a href="https://web-official-hth.com.cn">华体会</a>，按自己的节奏慢慢看。
+  </p>
+
+  <!-- 页脚 -->
+  <div class="footer">
+    <p>信息页面 · 仅作介绍用途</p>
+  </div>
+</div>
+</body>
+</html>

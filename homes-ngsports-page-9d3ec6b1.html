@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NG体育 · 场景分类与活动索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, #fbe9d2 0%, #f9d7b0 50%, #f5c894 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem;
+    }
+    .wrapper {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* 顶部导航 */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      box-shadow: 0 6px 18px rgba(180, 120, 60, 0.08);
+      margin-bottom: 2.5rem;
+    }
+    .nav-logo {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #7a4a2a;
+      letter-spacing: 0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #5e3e28;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.3rem 0.1rem;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-links a:hover {
+      border-bottom-color: #b87a4f;
+      color: #3f2a1b;
+    }
+    @media (max-width: 680px) {
+      .nav-bar {
+        flex-direction: column;
+        gap: 0.6rem;
+        border-radius: 30px;
+        padding: 1rem 1.2rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* 白色卡片体系 */
+    .card {
+      background: #ffffffea;
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      box-shadow: 0 12px 28px rgba(150, 100, 50, 0.10);
+      padding: 2.2rem 2.8rem;
+      margin-bottom: 2.2rem;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 16px 34px rgba(140, 90, 40, 0.12);
+    }
+
+    /* hero 简语 */
+    .hero-area {
+      text-align: center;
+      padding: 2rem 2rem 1.6rem;
+    }
+    .hero-area h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #3f2b1b;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .hero-area .subhead {
+      font-size: 1.1rem;
+      color: #6d503a;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* 介绍段落 (信息索引) */
+    .intro-text {
+      font-size: 1.04rem;
+      line-height: 1.7;
+      color: #3d2c1e;
+    }
+    .intro-text a {
+      color: #a16436;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px dashed #b87a4f;
+      transition: border-bottom 0.2s, color 0.2s;
+    }
+    .intro-text a:hover {
+      color: #6e3f1f;
+      border-bottom: 1px solid #7a4a2a;
+    }
+
+    /* 三个场景模块 — 卡片网格 */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 1.5rem 0 0.5rem;
+    }
+    .scene-item {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 8px 16px rgba(100, 60, 20, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #f7e7d8;
+    }
+    .scene-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 26px rgba(130, 80, 30, 0.10);
+    }
+    .scene-item h3 {
+      font-size: 1.3rem;
+      color: #553b27;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .scene-item p {
+      font-size: 0.98rem;
+      color: #4e3827;
+      line-height: 1.65;
+    }
+    .scene-tag {
+      display: inline-block;
+      background: #f0e0cf;
+      color: #4d3422;
+      border-radius: 40px;
+      padding: 0.2rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      margin-top: 0.7rem;
+    }
+    @media (max-width: 860px) {
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 1.8rem 1.5rem;
+      }
+    }
+
+    /* 常见说明 / FAQ 摘要 */
+    .faq-summary dt {
+      font-weight: 600;
+      color: #4d3521;
+      margin: 1.2rem 0 0.3rem;
+      font-size: 1.05rem;
+      border-left: 4px solid #c99564;
+      padding-left: 0.8rem;
+    }
+    .faq-summary dd {
+      margin-left: 1.2rem;
+      color: #4a3628;
+      line-height: 1.65;
+      font-size: 0.98rem;
+    }
+    .faq-summary dd a {
+      color: #a16436;
+      text-decoration: none;
+      border-bottom: 1px dotted #b87a4f;
+    }
+    .faq-summary dd a:hover {
+      border-bottom: 1px solid #7a4a2a;
+    }
+
+    /* 圆角按钮感链接 (用于内嵌) */
+    .btn-link {
+      display: inline-block;
+      background: #efe1d2;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #55331f;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border: 1px solid #dbbc9f;
+      font-size: 0.95rem;
+    }
+    .btn-link:hover {
+      background: #dbbc9f;
+      color: #2f1d12;
+    }
+
+    .footnote {
+      text-align: center;
+      margin-top: 0.8rem;
+      color: #6b5542;
+      font-size: 0.88rem;
+    }
+
+    hr {
+      margin: 1.4rem 0 0.8rem;
+      border: 0;
+      border-top: 1px solid #e2cfba;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- 顶部导航 -->
+  <nav class="nav-bar">
+    <span class="nav-logo">📋 资料整理</span>
+    <ul class="nav-links">
+      <li><a href="#intro">信息索引</a></li>
+      <li><a href="#scenes">场景分类</a></li>
+      <li><a href="#faq">常见说明</a></li>
+      <li><a href="https://homes-ngsports.com">NG体育</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero 区域 -->
+  <div class="card hero-area">
+    <h1>NG体育 · 活动场景索引</h1>
+    <p class="subhead">
+      从资料整理的角度，将体育、休闲、社交相关的活动模式按场景归类，便于快速定位与查阅。
+    </p>
+  </div>
+
+  <!-- 核心介绍 (融入信息索引角度) -->
+  <div class="card" id="intro">
+    <div class="intro-text">
+      <p>
+        在日常内容整理中，我们发现与运动、竞技、户外相关的信息往往分散在多个渠道。通过结构化的场景划分，可以更高效地建立认知框架。<a href="https://homes-ngsports.com">NG体育</a> 
+        作为一个聚合型的资料索引站点，将不同活动形态按类型、参与方式与场地特征做了初步分类，帮助使用者从宏观上理解各项活动的匹配场景。
+      </p>
+      <p style="margin-top: 1rem;">
+        本次整理以“轻量导航”为思路，提炼出三个具有代表性的场景模块，每个模块均围绕特定的活动需求展开。下面逐一说明这些场景的特征与常见形式。
+      </p>
+    </div>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="card" id="scenes">
+    <h2 style="font-size:1.5rem; font-weight:600; color:#42301e; margin-bottom:0.4rem;">🔄 场景分类模块</h2>
+    <p style="color:#5e4532; margin-bottom:0.6rem; font-size:0.98rem;">以下三类场景覆盖了大部分体育及休闲活动的组织形态：</p>
+
+    <div class="scene-grid">
+      <div class="scene-item">
+        <h3>🏀 场地竞技</h3>
+        <p>以固定场地为基础，强调回合制、对抗性或协作性。典型如篮球、羽毛球、乒乓球、壁球等。适合组队预约、小型联赛或日常训练。</p>
+        <span class="scene-tag">固定场地 · 对抗协作</span>
+      </div>
+      <div class="scene-item">
+        <h3>🏞️ 户外轻运动</h3>
+        <p>偏向自然场地或开放空间，活动强度较为灵活。包括徒步、骑行、飞盘、慢跑、户外瑜伽等。注重氛围与个体节奏。</p>
+        <span class="scene-tag">开放空间 · 强度自选</span>
+      </div>
+      <div class="scene-item">
+        <h3>🎯 休闲竞技</h3>
+        <p>融合策略、技巧与趣味，参与门槛较低。例如射箭、保龄球、台球、桌面冰壶、电竞赛事等。适合社交破冰与轻松体验。</p>
+        <span class="scene-tag">低门槛 · 趣味社交</span>
+      </div>
+    </div>
+
+    <p style="margin-top:1.2rem; font-size:0.92rem; color:#5a432f;">
+      每个场景均可根据参与人数、时长、器材需求进一步细分，形成更完整的索引体系。
+    </p>
+  </div>
+
+  <!-- 常见说明 / FAQ 摘要 (资料整理角度) -->
+  <div class="card" id="faq">
+    <h2 style="font-size:1.5rem; font-weight:600; color:#42301e; margin-bottom:0.2rem;">📌 常见说明</h2>
+    <p style="color:#5e4532; margin-bottom:0.8rem; font-size:0.95rem;">基于对 <a href="https://homes-ngsports.com" style="color:#a16436;border-bottom:1px dashed #b87a4f;text-decoration:none;">NG体育</a> 资料整理过程中遇到的典型问题，归纳如下：</p>
+
+    <dl class="faq-summary">
+      <dt>如何选择适合的活动场景？</dt>
+      <dd>建议先明确参与人数、场地偏好和预期运动强度。例如，2–4 人且希望室内进行，可优先查看“场地竞技”类；若倾向户外、放松型活动，则可参考“户外轻运动”。</dd>
+
+      <dt>同一个活动会出现在多个场景中吗？</dt>
+      <dd>是的。部分活动（如飞盘、瑜伽）既可在户外进行，也可在室内场馆开展。分类以主流参与方式为准，兼顾灵活性。</dd>
+
+      <dt>资料索引会持续更新吗？</dt>
+      <dd>
+        会。随着活动形式演变和场地信息完善，分类条目与说明将定期补充。您也可以通过 
+        <a href="https://homes-ngsports.com" class="btn-link">NG体育</a> 
+        获取最新资料概览。
+      </dd>
+    </dl>
+    <hr>
+    <p class="footnote">以上说明基于现有公开资料整理，仅供参考。具体活动安排以实际场馆或组织方发布为准。</p>
+  </div>
+
+  <!-- 页脚式提示 (自然指向) -->
+  <div style="text-align: center; margin: 1rem 0 0.4rem;">
+    <span style="background:#e6d3c1; padding:0.4rem 1.8rem; border-radius:60px; font-size:0.9rem; color:#3f2a1b;">
+      资料索引：<a href="https://homes-ngsports.com" style="color:#6e3f1f; text-decoration:none; font-weight:500;">NG体育</a> · 场景分类 · 轻量导航
+    </span>
+  </div>
+</div>
+</body>
+</html>

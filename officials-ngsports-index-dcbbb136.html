@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NG体育 · 资料索引与场景导览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f9fc;
+            color: #1a2c3e;
+            line-height: 1.6;
+            padding: 1.5rem 1rem;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            box-shadow: 0 6px 18px rgba(0,50,60,0.06);
+            margin-bottom: 2.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.3rem;
+            letter-spacing: 0.02em;
+            color: #0f4a5c;
+        }
+
+        .nav-brand span {
+            color: #2a9d8f;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #2b4b5e;
+            font-weight: 500;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-links li a:hover {
+            border-bottom-color: #2a9d8f;
+            color: #0a3b44;
+        }
+
+        /* hero 区 */
+        .hero {
+            text-align: center;
+            padding: 2.5rem 0.8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            font-weight: 600;
+            color: #0a3847;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 i {
+            color: #2a9d8f;
+            font-style: normal;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 1rem auto 0;
+            font-size: 1.05rem;
+            color: #3b5c6e;
+        }
+
+        .hero .tagline {
+            margin-top: 1.5rem;
+            background: #e0f0f0;
+            display: inline-block;
+            padding: 0.4rem 1.6rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            color: #115a66;
+            font-weight: 500;
+        }
+
+        /* 网格卡片 — 三个场景模块 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0 3.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 1.8rem 1.5rem 2rem;
+            box-shadow: 0 8px 24px rgba(28, 78, 90, 0.05);
+            transition: transform 0.15s ease, box-shadow 0.25s;
+            border-left: 4px solid #2a9d8f;
+        }
+
+        .card:nth-child(2) {
+            border-left-color: #3aae9f;
+        }
+
+        .card:nth-child(3) {
+            border-left-color: #4dbcb0;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(24, 82, 90, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.7rem;
+            color: #0c3f4e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 .emoji-badge {
+            background: #d5ecea;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .card p {
+            color: #2f5566;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card .meta-tag {
+            display: inline-block;
+            background: #edf5f6;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            color: #116c78;
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* 常见说明 / 索引块 */
+        .info-section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 2rem 2.2rem 2.5rem;
+            box-shadow: 0 6px 20px rgba(0,45,55,0.04);
+            margin: 1.8rem 0 3rem;
+        }
+
+        .info-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0e4657;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .info-section h2 small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #5e7c8a;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.6rem;
+        }
+
+        .info-item {
+            padding: 0.2rem 0;
+        }
+
+        .info-item strong {
+            color: #1c5a6b;
+            font-weight: 600;
+        }
+
+        .info-item p {
+            margin-top: 0.2rem;
+            color: #345e6e;
+            font-size: 0.95rem;
+        }
+
+        .faq-preview {
+            margin-top: 2rem;
+            border-top: 1px solid #d2e4e6;
+            padding-top: 1.5rem;
+        }
+
+        .faq-preview details {
+            margin-bottom: 0.8rem;
+            background: #f6fbfd;
+            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+        }
+
+        .faq-preview summary {
+            font-weight: 600;
+            color: #0f4a57;
+            outline: none;
+        }
+
+        .faq-preview details p {
+            padding: 0.6rem 0 0.2rem;
+            color: #2b5363;
+            font-size: 0.92rem;
+        }
+
+        /* 链接嵌入句子示例 */
+        .inline-link-wrapper {
+            background: #e5f1f2;
+            border-radius: 20px;
+            padding: 1.2rem 1.8rem;
+            margin: 1rem 0 2.2rem;
+            font-size: 0.98rem;
+            color: #144f5e;
+        }
+
+        .inline-link-wrapper a {
+            color: #117a89;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed #2a9d8f;
+            transition: border-bottom 0.15s;
+        }
+
+        .inline-link-wrapper a:hover {
+            border-bottom: 2px solid #2a9d8f;
+        }
+
+        /* 页脚 */
+        .footer-note {
+            text-align: center;
+            padding: 2rem 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            color: #6a8a98;
+            border-top: 1px solid #d0e2e5;
+            margin-top: 1rem;
+        }
+
+        /* 移动端响应 */
+        @media (max-width: 880px) {
+            .grid-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .nav {
+                flex-direction: column;
+                gap: 0.4rem;
+                padding: 1rem 1.2rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            .info-section {
+                padding: 1.5rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 顶部导航 -->
+    <nav class="nav">
+        <div class="nav-brand"><span>◆</span> NG·索引</div>
+        <ul class="nav-links">
+            <li><a href="#">场景导览</a></li>
+            <li><a href="#">资料整理</a></li>
+            <li><a href="#">分类笔记</a></li>
+            <li><a href="#">关于</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero 介绍 -->
+    <div class="hero">
+        <h1>基于 <i>NG体育</i> 的信息索引</h1>
+        <p>围绕平台内容特征，将运动资源、赛事资料与交互场景加以归类，形成轻量级知识导引。本页面向资料查阅与场景理解，不构成商业推介。</p>
+        <div class="tagline">📋 场景模块 · 常见说明 · 索引框架</div>
+    </div>
+
+    <!-- 三个场景模块（网格卡片） -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3><span class="emoji-badge">🏀</span> 赛事资料</h3>
+            <p>主流联赛历史数据、赛程结构、队伍档案与基础统计。内容以公开信息整理为主，便于快速浏览与回顾。</p>
+            <span class="meta-tag">覆盖 5 个赛季</span>
+        </div>
+        <div class="card">
+            <h3><span class="emoji-badge">⚽</span> 运动百科</h3>
+            <p>规则演变、场地标准、装备沿革与运动术语。从资料整合角度梳理，适合不同阶段的爱好者和研究者。</p>
+            <span class="meta-tag">30+ 词条</span>
+        </div>
+        <div class="card">
+            <h3><span class="emoji-badge">🎯</span> 交互场景</h3>
+            <p>模拟对局、数据可视化、策略推演等轻量功能组件说明。场景示例基于常见体育交互逻辑，非实时服务。</p>
+            <span class="meta-tag">实验性原型</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 / 索引区块 -->
+    <div class="info-section">
+        <h2>📌 资料整理说明 <small>· 索引框架</small></h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <strong>分类逻辑</strong>
+                <p>按运动项目、赛事层级、时间线三种维度交叉标记。每个条目包含摘要、来源参考与相关标签。</p>
+            </div>
+            <div class="info-item">
+                <strong>整理原则</strong>
+                <p>以公开可查信息为基础，区分客观数据与解释性内容。不提供预测、推荐或任何形式的投注引导。</p>
+            </div>
+            <div class="info-item">
+                <strong>模块更新</strong>
+                <p>赛季数据每年常规刷新，百科类内容持续校正。更新记录标注在每条资料的脚注中。</p>
+            </div>
+            <div class="info-item">
+                <strong>使用提示</strong>
+                <p>本页为静态索引，不收集用户数据，也不包含外部脚本。所有链接指向内容说明或外部参考源。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-preview">
+            <details>
+                <summary>❓ 这些场景模块来自哪里？</summary>
+                <p>模块内容基于对 <a href="https://officials-ngsports.com" style="color:#117a89; font-weight:600; text-decoration:underline;">NG体育</a> 相关公开资料的整理与再分类，仅作为知识组织示例，不代表官方立场。</p>
+            </details>
+            <details>
+                <summary>📁 是否包含第三方信息？</summary>
+                <p>部分百科条目可能引用公开的体育数据源，已在内部备注中标注。建议以权威体育组织发布的信息为准。</p>
+            </details>
+            <details>
+                <summary>🔍 如何理解“资料索引”定位？</summary>
+                <p>页面侧重结构性展示，不提供实时数据或交互服务。旨在帮助用户快速定位感兴趣的主题方向。</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- 将链接自然嵌入句子的区域 -->
+    <div class="inline-link-wrapper">
+        <p>📎 在体育信息整理过程中，<a href="https://officials-ngsports.com">NG体育</a> 的相关公开页面常被作为参考框架之一，用以对比赛季呈现方式与内容组织逻辑。此处仅作索引引用，不表示内容背书。</p>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        <p>资料索引页 · 静态内容示意 · 基于公开信息整理   |   无商业用途   |   版本 2025.03</p>
+    </div>
+
+</div>
+</body>
+</html>
